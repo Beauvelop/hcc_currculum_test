@@ -1,0 +1,172 @@
+/* css variables */
+:root {
+  --pearTree: url("http://bit.ly/2wOFICD");
+  --graphBG: url("http://bit.ly/2wTIs0P");
+  --mtnBG: url("http://bit.ly/2xps1qz");
+  --skyBG: url("http://bit.ly/2vuqhek");
+  --house1: url("http://bit.ly/2wWRVV2");
+  --crows: url("http://bit.ly/2wiWVRx");
+  --deadTrees: url("http://bit.ly/2wCJ8ba");
+  --scaryGhost: url("http://bit.ly/2wEGaCE");
+  --redMoon: url("http://bit.ly/2iEDIGu");
+  --clouds: url("http://bit.ly/2weq9m9");
+}
+/* graphPaperbackground */
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--graphBG) no-repeat center center fixed;
+  background-size: cover;
+  grid-template-columns: repeat(4, 25vw);
+  grid-template-rows: repeat(4, 25vh);
+  background-color: darkblue;
+  display: grid;
+}
+.our-school {
+  background: var(--pearTree) no-repeat bottom center;
+  background-size: 100% 100%;
+  grid-column: 1/5;
+  grid-row: 1/5;
+}
+
+.house {
+  z-index: 3;
+  background: var(--house1) no-repeat bottom center;
+
+  grid-column: 2/4;
+  grid-row: 3/6;
+  margin-top: 50px;
+  margin-bottom: -10px;
+
+  /*   EXPERIMENT (refer to list in Javascript comments*/
+  background-size: 100% 75%;
+  /*   mix-blend-mode: luminosity; */
+  /*   mix-blend-mode: hard-light; */
+
+  /* Scary VERSION */
+  filter: sepia(90%) brightness(0.4) drop-shadow(1px 1px 50px rgba(251, 137, 80, 0.3));
+}
+
+.trees {
+  background: var(--deadTrees) no-repeat bottom center;
+  grid-column: 1/5;
+  grid-row: 3/5;
+  z-index: 5;
+
+  /*   EXPERIMENT WITH SIZE -- discuss order & layers in html */
+  background-size: 100% 100%;
+  mix-blend-mode: multiply;
+}
+
+.birds {
+  z-index: 4;
+  background: var(--crows) no-repeat bottom center;
+  background-size: 65% 50%;
+  grid-column: 1/3;
+  grid-row: 3;
+  mix-blend-mode: multiply;
+
+  /*   EXPERIMENT WITH SIZE  (note that they wont fly out side of their columns or rows*/
+  background-size: 100% 100%;
+}
+
+.back-drop {
+  z-index: 1;
+  background: var(--mtnBG) no-repeat bottom center;
+  background-size: 100% 100%;
+  grid-column: 1/5;
+  grid-row: 2/5;
+  /*   DISCUSS DISTANCE PERSPECTIVE: EXPERIMENT WITH BLUR & BRIGHTNESS */
+  /*   filter: brightness(.8) blur(1px); */
+}
+
+.sky {
+  z-index: 0;
+  background: var(--skyBG) no-repeat bottom center;
+  background-size: 100% 100%;
+  grid-column: 1/5;
+  grid-row: 1/5;
+
+  /*   EXPERIMENT WITH BRIGHTNESS */
+  filter: brightness(0.3);
+}
+
+.foreground-figure {
+  background: var(--scaryGhost) no-repeat bottom center;
+  background-size: 20% 40%;
+  grid-column: 2;
+  grid-row: 4;
+  z-index: 4;
+  /*   Talk about blur or position in the grid */
+
+  filter: blur(1px);
+  /*   mix-blend-mode: color-dodge; */
+
+  /*   Perhaps put it behind the mountain and make it a huge monster */
+  /*   z-index: 0; */
+  /*   grid-row: 2/-1; */
+  /*   background-size: 100% 100%; */
+}
+
+.sky-figure {
+  background: var(--redMoon) no-repeat bottom center;
+  background-size: 60% 50%;
+  grid-column: 4;
+  grid-row: 1/3;
+  mix-blend-mode: exclusion;
+  /* EXPERIMENT WITH CHANGING COLORS: DISCUSS COLOR-WHEEL*/
+  /*   filter: hue-rotate(90deg); */
+}
+
+.clouds {
+  background: var(--clouds) repeat bottom center;
+  background-size: 180% 130%;
+  grid-column: 1/5;
+  grid-row: 1/4;
+  /*   PLAY WITH BRIGHTNESS */
+  filter: brightness(0.2) blur(2px);
+}
+
+/* STEP 11 HERE: Uncomment */
+#animated {
+  background-position: 0px 0px;
+  background-repeat: repeat-x;
+  animation: leftToRight 210s linear infinite forwards;
+}
+
+@keyframes leftToRight {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+/* GRID OVERLAY */
+
+.grid-overlay {
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+  z-index: 15;
+  display: grid;
+  grid-template-columns: repeat(4, 25vw);
+  grid-template-rows: repeat(4, 25vh);
+}
+.gridbox {
+  text-transform: uppercase;
+  border: 1px dashed maroon;
+  color: burlywood;
+  font-size: 13px;
+  font-family: Trebuchet, sans-serif;
+  text-align: center;
+  padding: 5vh;
+}
+.grid-button {
+  position: fixed;
+  top: 2vh;
+  left: 1vw;
+  background: maroon;
+  color: burlywood;
+  z-index: 20;
+}
